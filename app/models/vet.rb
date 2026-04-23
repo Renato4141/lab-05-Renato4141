@@ -5,7 +5,7 @@ class Vet < ApplicationRecord
         self.email = email.to_s.strip.downcase
     end
     before_validation :normalize_email
-    validates :name, presence: true
+    validates :first_name, presence: true
     validates :last_name, presence: true
     validates :specialization, presence: true
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }

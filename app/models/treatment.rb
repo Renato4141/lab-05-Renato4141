@@ -1,6 +1,7 @@
 class Treatment < ApplicationRecord
   belongs_to :appointment
 
-  validates :name, presence: true
-  validates :name, administered_at, :appointment, presence: true
+  validates :first_name, presence: true
+  validates :administered_at, presence: true
+  validates :appointment, presence: true
 end

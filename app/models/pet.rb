@@ -12,6 +12,11 @@ class Pet < ApplicationRecord
     self.name = name.to_s.capitalize
   end
 
+  def normalize_species
+    self.species = species.to_s.downcase.strip
+  end
+
+  before_validation :normalize_species
   before_save :capitalize_name
   validates :name, presence: true
   validates :owner, presence: true
