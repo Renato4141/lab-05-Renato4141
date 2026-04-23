@@ -15,10 +15,10 @@
     <% @appointments.each do |a| %>
       <tr>
         <td><%= a.date.strftime("%B %d, %Y") %></td>
-        <td><%= link_to a.pet.name, a.pet %></td>
-        <td><%= link_to a.vet.first_name, a.vet %></td>
+        <td><%= link_to a.pet.name, a.pet if a.pet %></td>
+        <td><%= link_to a.vet.first_name, a.vet if a.vet %></td>
         <td><%= a.reason %></td>
-        <td><%= a.status&.humanize || "Sin estado" %>
+        <td><%= a.status&.humanize || "Sin estado" %></td>
       </tr>
     <% end %>
   </tbody>

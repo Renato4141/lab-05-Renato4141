@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.includes(:owner)
+    @pets = Pet.all
   end
 
   def show

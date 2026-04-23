@@ -1,15 +1,15 @@
 <h1>Appointment</h1>
 
-<p>Date: <%= @appointment.date.strftime("%B %d, %Y") %></p>
+<p>Date: <%= @appointment.date&.strftime("%B %d, %Y") %></p>
 <p>Reason: <%= @appointment.reason %></p>
-<p>Status: <%= @appointment.status.humanize %></p>
+<p>Status: <%= @appointment.status&.humanize || "Sin estado" %></p>
 
 <p>
-Pet: <%= link_to @appointment.pet.name, @appointment.pet %>
+  Pet: <%= link_to @appointment.pet.name, @appointment.pet if @appointment.pet %>
 </p>
 
 <p>
-Vet: <%= link_to @appointment.vet.first_name, @appointment.vet %>
+  Vet: <%= link_to @appointment.vet.first_name, @appointment.vet if @appointment.vet %>
 </p>
 
 <h2>Treatments</h2>
