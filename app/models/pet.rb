@@ -18,6 +18,7 @@ class Pet < ApplicationRecord
 
   before_validation :normalize_species
   before_save :capitalize_name
+
   validates :name, presence: true
   validates :owner, presence: true
   validates :species, presence: true, inclusion: { in: %w[dog cat rabbit bird reptile other] }
@@ -26,8 +27,5 @@ class Pet < ApplicationRecord
   validate :date_not_in_future
   validates :weight, presence: true, numericality: { greater_than: 0 }
 
-  scope :by_species, ->(species) { where(species: species) }
-
-
-
+  scope :by_species, ->(species) { where(species: species.to_s.downcase) }
 end

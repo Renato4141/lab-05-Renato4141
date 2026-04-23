@@ -1,6 +1,13 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointments = Appointment.includes(:pet, :vet).all
+    @appointments =
+      if params[:filter] == "upcoming"
+        Appointment.includes(:pet, :vet).upcoming
+      elsif params[:filter] == "past"
+        Appointment.includes(:pet, :vet).past
+      else
+        Appointment.includes(:pet, :vet).all
+      end
   end
 
   def show
