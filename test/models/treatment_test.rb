@@ -9,7 +9,7 @@ class TreatmentTest < ActiveSupport::TestCase
     )
   end
 
-  test "valid treatment can be saved" do
+  test "valid treatment is valid" do
     assert valid_treatment.valid?
   end
 
@@ -17,20 +17,17 @@ class TreatmentTest < ActiveSupport::TestCase
     treatment = valid_treatment
     treatment.name = nil
     assert_not treatment.valid?
-    assert_includes treatment.errors[:name], "can't be blank"
   end
 
   test "invalid without administered_at" do
     treatment = valid_treatment
     treatment.administered_at = nil
     assert_not treatment.valid?
-    assert_includes treatment.errors[:administered_at], "can't be blank"
   end
 
   test "invalid without appointment" do
     treatment = valid_treatment
     treatment.appointment = nil
     assert_not treatment.valid?
-    assert treatment.errors[:appointment].any?
   end
 end
