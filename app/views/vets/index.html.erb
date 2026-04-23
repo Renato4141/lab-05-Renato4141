@@ -1,5 +1,11 @@
 <h1>Vets</h1>
 
+<div class="mb-3">
+  <%= link_to "All", vets_path, class: "btn btn-secondary" %>
+  <%= link_to "General", vets_path(specialization: "General"), class: "btn btn-primary" %>
+  <%= link_to "Surgery", vets_path(specialization: "Surgery"), class: "btn btn-danger" %>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -12,7 +18,7 @@
   <tbody>
     <% @vets.each do |vet| %>
       <tr>
-        <td><%= link_to "#{vet.first_name} #{vet.last_name}", vet %></td>
+        <td><%= link_to "#{vet.first_name} #{vet.last_name}", vet_path(vet) %></td>
         <td><%= vet.email %></td>
         <td><%= vet.specialization %></td>
       </tr>

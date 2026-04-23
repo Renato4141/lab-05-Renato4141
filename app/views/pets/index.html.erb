@@ -1,5 +1,12 @@
 <h1>Pets</h1>
 
+<div class="mb-3">
+  <%= link_to "All", pets_path, class: "btn btn-secondary" %>
+  <%= link_to "Dogs", pets_path(species: "Dog"), class: "btn btn-primary" %>
+  <%= link_to "Cats", pets_path(species: "Cat"), class: "btn btn-info" %>
+  <%= link_to "Rabbits", pets_path(species: "Rabbit"), class: "btn btn-success" %>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -14,10 +21,10 @@
   <tbody>
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= link_to pet.name, pet %></td>
+        <td><%= link_to pet.name, pet_path(pet) %></td>
         <td><%= pet.species %></td>
         <td><%= pet.breed %></td>
-        <td><%= link_to pet.owner.first_name, pet.owner %></td>
+        <td><%= link_to pet.owner.first_name, owner_path(pet.owner) if pet.owner %></td>
         <td><%= pet.date_of_birth.strftime("%B %d, %Y") %></td>
       </tr>
     <% end %>

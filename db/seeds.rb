@@ -32,11 +32,11 @@ vet1 = Vet.create(first_name: "Anabela", last_name: "Silvanus", email: "anabela@
 vet2 = Vet.create(first_name: "Cabro", last_name: "Cabreras", email: "cabracobra@vet.com", phone: "222222", specialization: "Surgery")
 
 # Appointments (status: 0=schedule,1=progress,2=completed,3=cancelled)
-app1 = Appointment.create(pet: pet1, vet: vet1, date: Time.now, reason: "Checkup", status: 0)
-app2 = Appointment.create(pet: pet2, vet: vet1, date: Time.now, reason: "Vaccination", status: 1)
-app3 = Appointment.create(pet: pet3, vet: vet2, date: Time.now, reason: "Injury", status: 2)
-app4 = Appointment.create(pet: pet4, vet: vet2, date: Time.now, reason: "Surgery", status: 2)
-app5 = Appointment.create(pet: pet5, vet: vet1, date: Time.now, reason: "Skin issue", status: 3)
+app1 = Appointment.create(pet: pet1, vet: vet1, date: 3.days.from_now, reason: "Checkup", status: 0)
+app2 = Appointment.create(pet: pet2, vet: vet1, date: 1.day.from_now, reason: "Vaccination", status: 1)
+app3 = Appointment.create(pet: pet3, vet: vet2, date: 2.days.ago, reason: "Injury", status: 2)
+app4 = Appointment.create(pet: pet4, vet: vet2, date: 5.days.ago, reason: "Surgery", status: 2)
+app5 = Appointment.create(pet: pet5, vet: vet1, date: 1.day.ago, reason: "Skin issue", status: 3)
 
 # Treatments (solo en progreso o completados)
 Treatment.create(appointment: app2, name: "Antibiotic", medication: "Amoxicillin", dosage: "2x daily", notes: "Infection", administered_at: Time.now)
