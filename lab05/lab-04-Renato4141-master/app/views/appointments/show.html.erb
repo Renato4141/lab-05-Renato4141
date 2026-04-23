@@ -1,0 +1,22 @@
+<h1>Appointment</h1>
+
+<p>Date: <%= @appointment.date.strftime("%B %d, %Y") %></p>
+<p>Reason: <%= @appointment.reason %></p>
+<p>Status: <%= @appointment.status.humanize %></p>
+
+<p>
+Pet: <%= link_to @appointment.pet.name, @appointment.pet %>
+</p>
+
+<p>
+Vet: <%= link_to @appointment.vet.first_name, @appointment.vet %>
+</p>
+
+<h2>Treatments</h2>
+<ul>
+  <% @appointment.treatments.each do |t| %>
+    <li>
+      <%= t.name %> - <%= t.medication %> - <%= t.dosage %>
+    </li>
+  <% end %>
+</ul>
